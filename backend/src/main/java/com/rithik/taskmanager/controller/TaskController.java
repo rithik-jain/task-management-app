@@ -1,6 +1,6 @@
-package com.customer.taskmanager.controller;
+package com.rithik.taskmanager.controller;
 
-import com.rithik.taskmanager.model.Task;
+import com.rithik.taskmanager.models.TaskVo;
 import com.rithik.taskmanager.service.TaskService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.data.domain.Page;
@@ -26,7 +26,7 @@ public class TaskController {
 
     @Operation(summary = "Create new task")
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody Task task) {
+    public ResponseEntity<?> create(@RequestBody TaskVo task) {
         try {
             return new ResponseEntity<>(service.create(task), HttpStatus.CREATED);
         } catch (IllegalArgumentException e) {
@@ -36,7 +36,7 @@ public class TaskController {
 
     @Operation(summary = "Get all tasks with pagination")
     @GetMapping
-    public ResponseEntity<Page<Task>> getAll(
+    public ResponseEntity<Page<TaskVo>> getAll(
             @RequestParam(required = false) Boolean isCompleted,
             Pageable pageable) {
         return ResponseEntity.ok(service.getAll(isCompleted, pageable));
@@ -55,7 +55,7 @@ public class TaskController {
     @Operation(summary = "Update task")
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable Integer id,
-                                    @RequestBody Task task) {
+                                    @RequestBody TaskVo task) {
         try {
             return ResponseEntity.ok(service.update(id, task));
         } catch (RuntimeException e) {

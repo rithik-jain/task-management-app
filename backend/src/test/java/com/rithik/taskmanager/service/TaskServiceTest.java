@@ -1,6 +1,6 @@
-package com.customer.taskmanager.service;
+package com.rithik.taskmanager.service;
 
-import com.customer.taskmanager.model.Task;
+import com.rithik.taskmanager.models.TaskVo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,12 +16,12 @@ class TaskServiceTest {
     @Test
     void shouldCreateTaskSuccessfully() {
 
-        Task task = new Task();
+        TaskVo task = new TaskVo();
         task.setTitle("Test Task");
         task.setDescription("Testing service layer");
         task.setIsCompleted(false);
 
-        Task savedTask = taskService.create(task);
+        TaskVo savedTask = taskService.create(task);
 
         assertNotNull(savedTask);
         assertNotNull(savedTask.getId());
@@ -32,7 +32,7 @@ class TaskServiceTest {
     @Test
     void shouldThrowExceptionWhenTitleIsMissing() {
 
-        Task task = new Task();
+        TaskVo task = new TaskVo();
         task.setDescription("No title provided");
 
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
@@ -45,12 +45,12 @@ class TaskServiceTest {
     @Test
     void shouldToggleCompletionStatus() {
 
-        Task task = new Task();
+        TaskVo task = new TaskVo();
         task.setTitle("Toggle Test");
 
-        Task saved = taskService.create(task);
+        TaskVo saved = taskService.create(task);
 
-        Task toggled = taskService.toggle(saved.getId());
+        TaskVo toggled = taskService.toggle(saved.getId());
 
         assertTrue(toggled.getIsCompleted());
     }
@@ -58,10 +58,10 @@ class TaskServiceTest {
     @Test
     void shouldDeleteTask() {
 
-        Task task = new Task();
+        TaskVo task = new TaskVo();
         task.setTitle("Delete Test");
 
-        Task saved = taskService.create(task);
+        TaskVo saved = taskService.create(task);
 
         taskService.delete(saved.getId());
 
