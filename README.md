@@ -2,8 +2,8 @@
 
 A full-stack Task Management Application built with:
 
-- **Backend**: Spring Boot (Java 21, Gradle, JPA, H2, Swagger)
-- **Frontend**: React + TypeScript (Axios, React Router)
+- **Backend**: Spring Boot (Java 21, Gradle, JPA, H2, Swagger) (IntelliJ editor)
+- **Frontend**: React + TypeScript (Axios, React Router) (VS code editor)
 
 This application allows users to create, update, delete, and manage tasks with pagination and filtering support.
 
@@ -247,6 +247,30 @@ http://localhost:3000
 
 ---
 
+# Decisions Taken
+
+- Used a layered architecture (Controller → Service → Repository) to keep responsibilities clear and avoid mixing business logic inside controllers.
+
+- Handled validation inside the service layer instead of relying only on annotations, so business rules are enforced consistently.
+
+- Implemented explicit error handling in controllers and returned proper HTTP status codes (201, 200, 400, 404, 204) to follow REST best practices.
+
+- Added pagination using Spring Pageable to prevent loading large datasets into memory and to make the API scalable from day one.
+
+- Added server-side filtering (isCompleted) to reduce unnecessary data transfer and keep the API efficient.
+
+- Integrated Swagger (OpenAPI) to make the API self-documenting and easier to test and integrate.
+
+- Added structured logging (SLF4J) in controller and service layers to make debugging and production monitoring easier.
+
+- Used H2 database for development to simplify setup and avoid environment dependency during local development.
+
+- Separated frontend concerns by using a centralized API layer (taskApi.ts) and TypeScript interfaces for better maintainability and type safety.
+
+- Avoided overengineering by keeping the design simple, clean, and extensible without introducing unnecessary abstractions.
+
+---
+
 #  Author
 Rithik Jain - rithikjain06@gmail.com
 
@@ -255,4 +279,3 @@ Rithik Jain - rithikjain06@gmail.com
 # 📜 License
 
 This project is for demonstration as part of Coderbyte assessment
-
