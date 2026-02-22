@@ -271,6 +271,16 @@ http://localhost:3000
 
 ---
 
+## Screenshots
+![Task Manager UI Screenshot](assets/Initial-UI.png)
+![Swagger UI Screenshot](assets/SwaggerUI-screenshot.png)
+![List Tasks Screenshot](assets/ListTasks-UI.png)
+![Create Task Screenshot](assets/CreateTask-UI.png)
+![Edit Task Screenshot](assets/EditTask-UI.png)
+![Toggle Switch Task Screenshot](assets/ToggleSwitch-UI.png)
+
+---
+
 #  Author
 Rithik Jain - rithikjain06@gmail.com
 
